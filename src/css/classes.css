@@ -1,0 +1,87 @@
+form {
+    margin: 2px 2%;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 5px 10px;
+}
+
+form h2 {
+    border-radius: 8px;
+    background: var(--brand-bg);
+    color: var(--brand-fg);
+    margin: 10px 0;
+    padding: 5px 0;
+    text-align: center;
+    font-size: medium;
+}
+
+form fieldset {
+    margin: 0 10px 10px 10px;
+    padding: 5px 10px;
+}
+
+form fieldset ul {
+    list-style: none;
+}
+
+form fieldset ul li {
+    padding: 5px;
+    margin-bottom: 2px;
+}
+
+form fieldset ul li label {
+    padding: 4px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--secondary-bg);
+    box-shadow: 2px 2px 4px black;
+    user-select: none;
+}
+
+form fieldset ul li label input {
+    display: none;
+}
+
+form fieldset ul li label a {
+    text-decoration: none;
+    color: var(--primary-fg);
+}
+
+form fieldset ul li label a:hover {
+    text-decoration: underline;
+}
+
+form fieldset ul li label:has(input:checked) {
+    background: var(--brand-bg);
+    color: var(--brand-fg);
+}
+
+form div {
+    position: sticky;
+    bottom: 25px;
+    right: 25px;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+}
+
+form div input {
+    padding: 5px;
+    background: var(--brand-bg);
+    color: var(--brand-fg);
+    border-radius: 8px;
+    font-size: medium;
+    box-shadow: 2px 2px 4px black;
+}
+
+form > a {
+    display: inline-block;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--brand-fg);
+    background: var(--brand-bg);
+    padding: 5px;
+    margin-top: 5px;
+    width: fit-content;
+    text-decoration: none;
+}

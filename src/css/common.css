@@ -1,0 +1,250 @@
+:root {
+    --primary-bg: white;
+    --secondary-bg: lightgray;
+    --primary-fg: black;
+    /* brand colors: updated from green to azure (matching top bar blue) */
+    --brand-bg: #0d6efd; /* azure / bootstrap primary */
+    --brand-bg-hover: #0b5ed7; /* slightly darker hover */
+    --brand-fg: white;
+    --border: gray;
+    --logout-fg: red;
+}
+
+body, header, h1, ul {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--secondary-bg);
+}
+
+body > header, body > footer {
+    background-color: var(--primary-bg);
+}
+
+/* HEADER */
+body > header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    display: flex;
+    padding: 10px 10px;
+}
+
+/* left side (title + logo) */
+body > header > a {
+    text-decoration: none;
+    color: var(--primary-fg);
+    padding: 5px 0;
+}
+
+body > header > a h1 {
+    display: flex;
+    align-items: center;
+}
+
+body > header > a img {
+    width: 36px;
+}
+
+/* right side (buttons) */
+body > header > nav {
+    align-items: center;
+    justify-content: flex-end;
+    display: flex;
+    width: 100%;
+    padding: 5px 0;
+    position: relative;
+}
+
+/* always shown buttons */
+body > header > nav > ul {
+    list-style: none;
+    gap: 4px;
+    height: 100%;
+}
+
+body > header > nav > ul {
+    display: inline-flex;
+}
+
+body > header > nav > ul li {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    box-shadow: 2px 2px 4px;
+}
+
+body > header > nav > ul li:hover {
+    background: var(--secondary-bg);
+}
+
+body > header > nav ul li a, body > header > nav ul li p {
+    align-items: center;
+    display: inline-flex;
+    text-decoration: none;
+    color: var(--primary-fg);
+    height: 100%;
+    width: 100%;
+    padding: 0 2px;
+    font-size: small;
+    margin: 0;
+}
+
+body > header > nav ul li img {
+    width: 25px;
+    border-radius: 8px;
+}
+
+body > header > nav ul li img:first-child {
+    margin-right: 2px;
+}
+
+.brand-button {
+    background: var(--brand-bg);
+    border: 0;
+}
+.brand-button:hover {
+    background: var(--brand-bg);
+}
+.brand-text {
+    color: var(--brand-fg);
+}
+
+.logout-text {
+    color: var(--logout-fg);
+}
+
+/* pop-up menu */
+body > header > nav div {
+    z-index: 1;
+    visibility: hidden;
+    position: absolute;
+    /* top/right will be set from JS to avoid tiny gaps when moving the pointer */
+    background: var(--brand-bg);
+    border: 0 1px 1px 1px solid var(--border);
+    border-radius: 0 0 8px 8px;
+    box-shadow: 2px 2px 4px;
+    padding: 1px;
+    /* ensure pointer events are enabled and avoid accidental gaps */
+    pointer-events: auto;
+}
+
+body > header > nav div ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+
+body > header > nav div ul li {
+    background: var(--primary-bg);
+    border: 1px solid var(--border);
+}
+
+body > header > nav div ul li:first-child {
+    border-radius: 8px 8px 0 0;
+}
+
+body > header > nav div ul li:last-child {
+    border-radius: 0 0 8px 8px;
+}
+
+body > header > nav div ul li:last-child a {
+    color: var(--logout-fg);
+}
+
+body > header > nav div ul li:hover {
+    background: var(--secondary-bg);
+}
+
+/* main */
+body > main {
+    background-color: var(--primary-bg);
+    flex: 1;
+}
+
+/* footer */
+body > footer {
+    text-align: center;
+    width: 100%;
+}
+
+/* Brand footer: ensure title is above logo and centered */
+.brand-link {
+    display: inline-block;
+    text-decoration: none; /* remove default anchor underline */
+    color: inherit;
+}
+.brand-title {
+    margin: 10px 0 6px 0;
+    font-size: 1.1rem;
+    text-decoration: underline;
+}
+.brand-logo {
+    display: block;
+    max-width: 420px;
+    width: 60%;
+    height: auto;
+    margin: 0 auto 8px auto;
+}
+
+/* Hover animation: subtle lift of title + gentle scale/raise of logo */
+.brand-link {
+    /* preserve previous rules */
+    display: inline-block;
+    text-decoration: none;
+    color: inherit;
+    /* enable smooth transitions for children */
+    transition: transform 220ms ease;
+}
+.brand-title {
+    margin: 10px 0 6px 0;
+    font-size: 1.1rem;
+    text-decoration: none;
+    text-decoration-thickness: 2px;
+    transition: transform 220ms ease, color 220ms ease, text-decoration-color 220ms ease;
+    will-change: transform;
+}
+.brand-logo {
+    transition: transform 220ms ease, filter 220ms ease;
+    will-change: transform;
+}
+.brand-link:hover .brand-title {
+    transform: translateY(-4px);
+    /* keep text color change but underline stays red */
+    color: var(--brand-bg);
+    text-decoration-color: red;
+}
+.brand-link:hover .brand-logo {
+    transform: translateY(-6px) scale(1.03);
+    filter: drop-shadow(0 6px 10px rgba(0,0,0,0.12));
+}
+.brand-link:active .brand-title, .brand-link:active .brand-logo {
+    transform: translateY(0) scale(0.99);
+}
+
+body > footer > p {
+    margin: 10px 0;
+}
+
+@media screen and (max-width: 389px) {
+    body > header > a h1 {
+        font-size: large;
+    }
+}
+
+@media screen and (min-width: 1240px) {
+    body {
+        width: 1240px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* Nascondi il footer brand quando richiesto (solo rendering grafico) */
+body.hide-brand-footer > footer {
+    display: none !important;
+}

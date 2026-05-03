@@ -1,0 +1,195 @@
+/* header variables are defined in common.css :root */
+
+body > main li{
+    list-style: none;
+}
+
+body > main a{
+    text-decoration: none;
+}
+
+body > main > section, body > main > article{
+    background-color: var(--secondary-bg);
+    margin: 20px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+body > main > section{
+    padding-bottom: 5px;
+}
+
+body > main > article > header, body > main > section > ul > li{
+    border-radius: 10px;
+    background-color: var(--primary-bg);
+    padding: 5px;
+}
+
+body > main > article > header > p{
+    margin: 5px 0;
+}
+
+body > main > article > section > img{
+    width: 300px;
+}
+
+body > main > article > header > a{
+    color: var(--brand-fg);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 0 5px;
+    height: 30px;
+    background-color: var(--brand-bg);
+}
+
+body > main > article > header > a > img, body > main > section > ul > li > a > img{
+    border-radius: 10px;
+    height: 20px;
+    border: 1px solid var(--border);
+    object-fit: contain;
+}
+
+body > main > section{
+    margin-bottom: 110px;
+}
+
+body > main > section > img{
+    position: fixed;
+    max-width: 90%;
+    max-height: 90%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(0,0,0,0.7);
+}
+
+body > main > section > ul img{
+    max-width: 300px;
+    max-height: 300px;
+    width: auto;
+    height: auto;
+}
+
+body > main > section > ul > li{
+    margin-bottom: 10px;
+}
+
+body > main > section > ul > li > a{
+    color: var(--brand-fg);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 0 5px;
+    height: 30px;
+    background-color: var(--brand-bg);
+}
+
+body > main > section > ul > li > p{
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+body > main > section > form {
+    position: fixed;
+    bottom: 48px;
+    left: 7%;
+    width: 86%;
+}
+
+body > main > section > form > ul{
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+}
+
+body > main > section > form > ul > li, body > main > section > form > ul{
+    background-color: var(--brand-fg);
+}
+
+
+/* text area */
+
+body > main > section > form > ul > li:nth-child(1){
+    width: 100%;
+    margin: 10px 1% 0 1%;
+}
+
+body > main > section > form > ul > li > textarea{
+    width: 100%;
+    padding: 0;
+    border: 0;
+    resize: none;
+    height: 30px;
+}
+
+/* aggiungi foto */
+
+body > main > section > form > ul > li:nth-child(2){
+    width: 79%;
+    margin: 0 0 10px 1%;
+    display: flex;
+}
+
+body > main > section > form > ul > li:nth-child(2)[hidden]{
+    display: none !important;
+}
+
+body > main > section > form > ul > li:nth-child(2) > span{
+    align-items: center;
+    padding: 9px 0;
+}
+
+body > main > section > form > ul > li:nth-child(2) > label > img:hover, body > main > section > form > ul > li:nth-child(3) > label > img:hover{
+    cursor: pointer;
+}
+
+body > main > section > form > ul > li > input{
+    width: 100%;
+}
+
+/* button add comment */
+body > main > section > form > ul > li:nth-child(3){
+    width: 19%;
+    margin: 0 1% 10px 0;
+    text-align: right;
+}
+
+body > main > section > form > ul > li:nth-child(3) img, body > main > section > form > ul > li:nth-child(2) img{
+    width: 35px;
+}
+
+@media screen and (min-width: 1240px) {
+    body > main > section > form {
+        width: 950px;
+        left: calc((100% - 950px) / 2);
+    }
+
+}
+
+@media screen and (max-width: 389px){
+    body > main > section, body > main > article{
+        background-color: var(--secondary-bg);
+        margin: 10px;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    body > main > section{
+        margin-bottom: 130px;
+    }
+
+    body > main > section > ul > li > img{
+        max-width: 284px;
+    }
+
+    body > main > article > section > img{
+        max-width: 300px;
+        max-height: 300px;
+        width: auto;
+        height: auto;
+    }
+}

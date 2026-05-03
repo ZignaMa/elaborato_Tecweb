@@ -1,0 +1,223 @@
+main {
+    padding: 2px 2%;
+}
+
+article header {
+    padding: 5px;
+    border: 1px solid var(--border);
+    border-bottom: 0;
+    border-radius: 8px 8px 0 0;
+    background: var(--brand-bg);
+    color: var(--brand-fg);
+    display: flex;
+    align-items: center;
+}
+
+article header img {
+    width: 26px;
+    border-radius: 8px;
+    margin-right: 2px;
+}
+
+main > article > header > p {
+    margin: 0;
+    width: 100%;
+}
+
+article header a {
+    color: var(--brand-fg);
+    padding: 3px;
+}
+
+article section nav ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    justify-content: space-around;
+}
+
+article section nav ul li {
+    border: 1px solid var(--border);
+    border-right: 0;
+    background: var(--primary-bg);
+    width: 100%;
+    text-align: center;
+    padding: 1px;
+}
+
+article section nav ul li:last-child {
+    border-right: 1px solid var(--border);
+}
+
+article section nav ul li.active {
+    background: var(--secondary-bg);
+}
+
+article section nav ul li a {
+    display: block;
+    text-decoration: none;
+    color: var(--primary-fg);
+}
+
+article section div {
+    padding: 5px;
+    background: var(--secondary-bg);
+    border: 1px solid var(--border);
+    border-top: 0;
+    border-radius: 0 0 8px 8px;
+}
+
+article section div ul {
+    list-style: none;
+}
+
+article section div ul li {
+    padding: 5px 0;
+}
+
+article section div#info form input[type="submit"] {
+    padding: 2px 5px;
+    color: red;
+}
+
+article section div#info form input[type="submit"][value="Aggiorna"] {
+    width: 80%;
+    margin-left: 10%;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    box-shadow: 2px 2px 4px;
+    background: var(--brand-bg);
+    color: var(--brand-fg);
+}
+
+article section div#info form input[type="submit"][value="Aggiorna"]:hover {
+    background: var(--brand-bg-hover);
+}
+
+/* the li before the submit button */
+article section div#info ul li:nth-last-child(2) {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    flex-wrap: wrap;
+}
+
+article section div#info img {
+    width: 26px;
+}
+
+article section div article {
+    margin-bottom: 5px;
+}
+
+article section div article a {
+    text-decoration: none;
+    color: var(--primary-fg);
+}
+
+article section div article header a {
+    margin: auto;
+    color: var(--brand-fg);
+    font-size: small;
+}
+
+article section div article header a:hover {
+    text-decoration: underline;
+}
+
+article section div article > a {
+    display: block;
+    padding-top: 5px;
+    background: var(--primary-bg);
+    border-radius: 0 0 8px 8px;
+}
+
+article section div article > a img {
+    display: block;
+    margin: auto;
+    max-width: 98%;
+    max-height: 350px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 5px;
+}
+
+article section div article > a p {
+    padding: 0 5px;
+    margin: 0;
+}
+
+article section div article > a p:last-child {
+    text-align: right;
+    font-size: x-small;
+}
+
+article section div#comments article a p:first-child {
+    font-size: small;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 5px;
+}
+
+article section div#classes h2 {
+    margin: 5px 0;
+    font-size: medium;
+}
+
+article section div#classes > p {
+    display: flex;
+    justify-content: flex-end;
+    gap: 5px;
+    margin: 0;
+}
+
+article section div#classes > p a {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--brand-bg);
+    color: var(--brand-fg);
+    text-decoration: none;
+    padding: 5px;
+}
+
+article section div#classes article {
+    border-radius: 8px;
+}
+
+article section div#classes article header {
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+}
+
+article section div#classes article header p {
+    font-size: x-small;
+    margin: 0;
+}
+
+article section div#classes article header:hover {
+    text-decoration: underline;
+}
+
+article section div#classes article ul {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 5px;
+    font-size: small;
+}
+
+article section div#classes article ul li {
+    padding: 0px;
+    margin: 5px;
+}
+
+article section div#classes article ul li a {
+    font-weight: bold;
+    color: var(--brand-bg);
+    display: block;
+    cursor: pointer;
+}
+
+article section div#classes article ul li a:hover {
+    text-decoration: underline;
+}

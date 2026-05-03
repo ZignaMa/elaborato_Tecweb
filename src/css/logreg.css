@@ -1,0 +1,87 @@
+form {
+    padding: 5% 10%;
+}
+
+form p {
+    color: red;
+    font-weight: bold;
+}
+
+form ul {
+    list-style: none;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 5% 0;
+}
+
+form img {
+    width: 30%;
+    margin: 0 35%;
+}
+
+form ul li {
+    margin-bottom: 20px;
+    width: 90%;
+    margin-left: 5%;
+    font-size: small;
+}
+
+form ul li label {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    font-weight: bold;
+}
+
+form ul li input, form ul li select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5px;
+}
+
+form ul li:not(:last-child) input {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+form ul li:last-child {
+    margin-bottom: 0px;
+    width: 90%;
+    margin-left: 5%;
+    border-radius: 8px;
+    box-shadow: 2px 2px 4px;
+    background: var(--brand-bg);
+}
+
+form ul li:last-child input {
+    font-weight: bold;
+    color: var(--brand-fg);
+    background: var(--brand-bg);
+    border: 0;
+    border-radius: 8px;
+}
+
+form ul li:last-child input:hover {
+    background: var(--brand-bg-hover);
+}
+
+@media screen and (min-width: 500px) {
+    form ul li {
+        width: 80%;
+        margin-left: 10%;
+        display: grid;
+        grid-template-columns: 40% 60%;
+    }
+
+    form ul li label {
+        text-align: right;
+        padding-right: 5px;
+        align-content: center;
+    }
+
+    form ul li:last-child {
+        display: block;
+        width: 80%;
+        margin-left: 10%;
+    }
+}

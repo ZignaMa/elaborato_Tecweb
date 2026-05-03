@@ -1,0 +1,286 @@
+main {
+    padding: 0 20px;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-fg);
+    display: block;
+    width: 100%;
+}
+
+/* NAV */
+main > nav > ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+main > nav li {
+    text-align: center;
+}
+
+main > nav li {
+    border: 2px solid var(--border);
+}
+
+main > nav li:not(:nth-child(3)):not(:nth-child(6)) {
+    border-right: 0;
+}
+
+main > nav li:nth-child(-n + 3) {
+    border-bottom: 0;
+}
+
+main > nav li a {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+/* SECTION */
+main > section {
+    background-color: var(--secondary-bg);
+    border: 2px solid var(--border);
+    border-top: 0;
+    padding: 5px;
+}
+
+main section form {
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid var(--border);
+    padding: 5px;
+    border-radius: 20px;
+    box-sizing: border-box;
+}
+
+main section form fieldset {
+    border: none;
+    width: 90%;
+    padding: 0 5px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+main section form fieldset input {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+main section form input[type="submit"] {
+    width: fit-content;
+    padding: 5px;
+    margin: 5px 5px 5px 0;
+}
+
+/* CLASSES */
+#classes ul li a {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--brand-fg);
+    background: var(--brand-bg);
+    padding: 5px;
+    margin: 5px;
+    box-sizing: border-box;
+    width: fit-content;
+}
+
+#classes ul li a:hover {
+    text-decoration: underline;
+}
+
+/* YEARS */
+#years ul {
+    list-style: inside;
+    padding: 5px;
+}
+
+/* PROFESORS and ASSISTANTS */
+#professors ul, #assistants ul {
+    padding: 5px;
+}
+
+#professors ul li, #assistants ul li {
+    padding-top: 5px;
+    border-top: 2px solid var(--border);
+    margin-top: 5px;
+}
+
+#professors ul li p, #assistants ul li p {
+    margin: 0;
+}
+
+#professors ul li p:nth-child(odd), #assistants ul li p:nth-child(odd) {
+    font-weight: bold;
+}
+
+#professors ul li p:nth-child(even), #assistants ul li p:nth-child(even) {
+    padding-left: 10px;
+}
+
+
+/* CLIENTS */
+#clients > ul {
+    padding: 5px;
+}
+
+#clients > ul > li {
+    border: 2px solid var(--border);
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: var(--primary-bg);
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#clients > ul > li:last-child {
+    margin-bottom: 0;
+}
+
+#clients > ul > li > a {
+    flex: 1 1 90%;
+    display: flex;
+}
+
+#clients > ul > li > a > ul {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    column-gap: 5px;
+    row-gap: 2px;
+    margin: 0 5px;
+}
+
+#clients > ul > li > a > ul > li {
+    flex: 1 0 45%;
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background-color: var(--secondary-bg);
+}
+
+#clients ul > li > p {
+    flex: 1 1 100%;
+    text-align: center;
+    border-radius: 10px;
+    padding: 2px 4px;
+    margin: 0;
+}
+
+#clients ul > li > p:first-child {
+    border: 1px solid var(--border);
+    margin: 0 0 1px 0;
+    background-color: var(--brand-bg);
+    color: var(--primary-bg);
+}
+
+#clients > ul > li > button {
+    width: 100%;
+    color: var(--primary-bg);
+    border-radius: 10px;
+    flex: 1 1 10%;
+    margin-top: 2px;
+}
+
+#clients img {
+    background-color: var(--secondary-bg);
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    object-fit: contain;
+    max-width: 40px;
+}
+
+/* ADMIN */
+#admins > ul {
+    padding: 5px;
+}
+
+#admins > ul > li {
+    border: 2px solid var(--border);
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: var(--primary-bg);
+}
+
+#admins > ul > li:last-child {
+    margin-bottom: 0;
+}
+
+#admins > ul > li > ul {
+    display: flex;
+    column-gap: 5px;
+    row-gap: 2px;
+    flex-wrap: wrap;
+}
+
+#admins > ul > li > ul > li {
+    display: flex;
+}
+
+#admins > ul > li > ul > li:first-child, #admins > ul > li > ul > li:nth-child(2) {
+    flex: 1 1 42%;
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background-color: var(--secondary-bg);
+}
+
+#admins > ul > li > ul > li:last-child {
+    flex: 1 1 8%;
+}
+
+#admins ul > li > p {
+    flex: 1 1 100%;
+    text-align: center;
+    border-radius: 10px;
+    margin: 1px 0;
+}
+
+#admins ul > li > p:first-child {
+    border: 1px solid var(--border);
+    margin: 0 0 1px 0;
+    background-color: var(--brand-bg);
+    color: var(--primary-bg);
+}
+
+#admins ul > li > button {
+    width: 100%;
+    color: var(--primary-bg);
+    border-radius: 10px;
+}
+
+@media screen and (min-width: 500px) {
+    main section form {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    main section form fieldset {
+        width: 70%;
+        display: grid;
+        grid-template-columns: 25% 75%;
+        row-gap: 5px;
+    }
+
+    main section form fieldset label {
+        box-sizing: border-box;
+        display: flex;
+        height: 100%;
+        align-items: center;
+        justify-content: right;
+    }
+}

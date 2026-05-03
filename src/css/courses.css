@@ -1,0 +1,52 @@
+form {
+    margin: 2px 2%;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 5px 10px;
+}
+
+form ul {
+    list-style: none;
+    padding: 5px 10px;
+}
+
+form ul li {
+    padding: 5px;
+    margin-bottom: 2px;
+}
+
+form ul li label {
+    padding: 4px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--secondary-bg);
+    box-shadow: 2px 2px 4px black;
+    user-select: none;
+}
+
+form ul li label input {
+    display: none;
+}
+
+form ul li label:has(input:checked) {
+    background: var(--brand-bg);
+    color: var(--brand-fg);
+}
+
+form div {
+    position: sticky;
+    bottom: 25px;
+    right: 25px;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+}
+
+form div input {
+    padding: 5px;
+    background: var(--brand-bg);
+    color: var(--brand-fg);
+    border-radius: 8px;
+    font-size: medium;
+    box-shadow: 2px 2px 4px black;
+}

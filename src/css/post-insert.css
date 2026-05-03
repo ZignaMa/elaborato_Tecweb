@@ -1,0 +1,113 @@
+body > main > h2{
+    text-align: center;
+    background-color: var(--brand-bg);
+    margin: 10px 10px 0 10px;
+    padding: 0 10px;
+    align-items: center;
+    color: var(--primary-bg);
+    border-radius: 10px 10px 0 0;
+}
+
+body > main > form{
+    background-color: var(--secondary-bg);
+    margin: 0 10px 10px 10px;
+    padding: 10px;
+    border-radius: 0 0 10px 10px;
+    font-size: 1.2em;
+}
+
+body > main > form > ul{
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 8px;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+body > main > form > ul > li:nth-child(-n+4){
+    width: 90%;
+    margin-left: 5%;
+}
+
+body > main > form > ul > li:nth-child(-n+4) label{
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+body > main > form > ul > li:nth-child(-n+4) select{
+    width: 100%;
+    box-sizing: border-box;
+}
+
+body > main > form > ul > li:nth-child(5){
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+body > main > form > ul > li:nth-child(5) textarea{
+    flex-grow: 1;
+    height: 200px;
+    resize: none;
+}
+
+body > main > form > ul > li:nth-child(6){
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    gap: 10px;
+}
+
+body > main > form > ul > li:nth-child(6) label{
+    background-color: var(--brand-bg);
+    border-radius: 8px;
+    font-size: 1.1em;
+    color: var(--primary-bg);
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    box-shadow: 2px 2px 4px black;
+}
+
+body > main > form > ul > li:nth-child(6) label:hover{
+    background: var(--brand-bg-hover);
+    cursor: pointer;
+}
+
+body > main > form > ul > li:nth-child(7){
+    align-self: flex-start;
+    width: 100%;
+}
+
+body > main > form > ul > li:nth-child(7) input{
+    background-color: var(--brand-bg);
+    border-radius: 8px;
+    box-shadow: 2px 2px 4px black;
+    color: var(--primary-bg);
+    font-size: 1.1em;
+}
+
+body > main > form > ul > li:nth-child(7) input:hover {
+    background: var(--brand-bg-hover);
+    cursor: pointer;
+}
+
+@media screen and (min-width: 500px) {
+
+    body > main > form > ul > li:nth-child(-n+4){
+        display: grid;
+        grid-template-columns: 40% 60%;
+    }
+
+    body > main > form > ul > li:nth-child(-n+4) label{
+        text-align: right;
+        padding-right: 5px;
+    }
+
+    body > main > form > ul > li:nth-child(-n+4) select{
+        max-width: 400px;
+    }
+}

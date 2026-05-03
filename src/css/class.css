@@ -1,0 +1,281 @@
+main {
+    padding: 0 10px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-fg);
+}
+
+li {
+    list-style: none;
+}
+
+/*header*/
+main > header {
+    display: flex;
+    background-color: var(--brand-bg);
+    align-content: center;
+    border-radius: 10px 10px 0 0;
+}
+
+main > header > h2 {
+    flex: 1 1 95%;
+    color: var(--primary-bg);
+    text-align: center;
+    margin: 0;
+    margin: 10px;
+    margin-right: 0%;
+}
+
+main > header  button {
+    height: inherit;
+    padding: 10px;
+    background-color: var(--brand-bg);
+    font-size: larger;
+    color: var(--primary-bg);
+    border-left: 3px solid var(--border);
+    border-radius: 0 10px 0 0;
+    cursor: pointer;
+}
+
+#unfollowButton {
+    box-shadow: inset 0 10px 30px black;
+}
+
+main > header  button:hover {
+    height: inherit;
+    padding: 10px;
+    background-color: var(--brand-bg-hover);
+    font-size: larger;
+    color: var(--primary-bg);
+    border-left: 3px solid var(--border);
+    border-radius: 0 10px 0 0;
+    cursor: pointer;
+    
+}
+
+/*nav*/
+main > section >nav > ul {
+    display: flex;
+}
+
+main > section nav li{
+    width: 33.3%;
+    text-align: center;
+    border-top: 2px solid var(--border);
+}
+
+#postsNav {
+    border-left: 2px solid var(--border);
+    border-right: 1px solid var(--border);
+}
+
+#infoNav {
+    border-left: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+}
+
+#resourcesNav {
+    border-left: 1px solid var(--border);
+    border-right: 2px solid var(--border);
+}
+
+main > section  li  a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: var(--primary-fg);
+}
+
+
+/*div*/
+main > section  div {
+    padding: 10px;
+    background-color: var(--secondary-bg);
+    border-bottom: 2px solid var(--border);
+    border-left: 2px solid var(--border);
+    border-right: 2px solid var(--border);
+    border-radius: 0 0 10px 10px ;
+}
+
+
+/*posts*/
+#posts article {
+    border-radius: 10px;
+    margin: 20px 0;
+    padding: 5px;
+    background-color: var(--primary-bg);
+}
+
+#posts header a{
+    border-radius: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    padding: 0 5px;
+    height: 40px;
+    background-color: var(--brand-bg);
+
+}
+
+#posts header img {
+    border-radius: 10px;
+    height: 30px;
+    border: 1px solid var(--border);
+}
+
+#posts header p {
+    margin: 0 5px;
+    color: var(--primary-bg);
+    font-size: large;
+
+}
+
+#posts article > a {
+    align-content: center;
+}
+
+#posts article > a img{
+    display: block;
+    margin: auto;
+    border: 1px solid var(--border);
+    width: 50%;
+    max-height: 150px;
+    border-radius: 10px;
+    object-fit: contain;
+}
+
+#posts article > a p {
+    padding: 0 5px;
+    margin: 5px 0 0 0;
+}
+
+#posts article > a p:last-child {
+    text-align: right;
+    font-size: x-small;
+}
+
+
+/*info*/
+
+#info ul {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 50px 0;
+}
+
+#info  li{
+    margin: 5px 0.5%;
+    flex: 1 1 46%;
+    background-color: var(--primary-bg);;
+    border-radius: 10px;
+    border: 2px solid var(--border);
+    border-top: 0;
+    
+}
+
+#info p, #info h3 {
+    text-align: center;
+    margin: 0;
+}
+
+#info h3 {
+    height: 30px;
+    border: 2px solid var(--border);
+    background-color: var(--secondary-bg);
+    border-radius: 10px;
+    color: var(--brand-bg);
+    align-content: center;
+}
+
+#info p {
+    height: 30px;
+    font-size: larger;
+    align-content: center;
+}
+
+/*resources*/
+#resources{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+#resources img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+}
+
+
+#resources > button {
+    flex: 1 1 100%;
+    color: var(--primary-bg);
+    background-color: var(--brand-bg);
+    margin: 0 15%;
+    padding: 10px 0;
+    text-align: center;
+    font-size: x-large;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+#resources form {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#errors {
+    flex: 1 1 100%;
+    background-color: var(--primary-bg);
+    margin: 10px 15%;
+    padding: 5px 0;
+    text-align: center;
+    font-size: large;
+    border-radius: 20px;
+    padding: 20px;
+    border: 2px solid red;
+}
+
+#submit {
+    flex: 1 1 100%;
+    color: var(--primary-bg);
+    background-color: var(--brand-bg);
+    margin: 10px 15%;
+    padding: 15px 0;
+    text-align: center;
+    font-size: x-large;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+#resources > ul {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+#resources > ul > li {
+    flex: 1 1 100px;
+    margin: 20px 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#resources > ul > li > a {
+    align-content: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+[hidden] {
+    display: none !important;
+}

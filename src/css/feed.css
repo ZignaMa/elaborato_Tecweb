@@ -1,0 +1,120 @@
+main {
+    padding: 2px 2%;
+}
+
+main > a {
+    display: flex;
+    position: fixed;
+    bottom: 35px;
+    left: 50vw;
+    color: var(--primary-bg);
+    background-color: var(--brand-bg);
+    border: 2px solid var(--border);
+    border-radius: 20px;
+    padding: 4px;
+    max-width: fit-content;
+    transform: translateX(-50%);
+    text-wrap: nowrap;
+}
+
+main > a > img {
+    width: 50px;
+    height: 50px;
+}
+
+main > a > p {
+    margin: 10px;
+    font-size: x-large;
+}
+
+main section {
+    margin: 0 0 70px 0;
+}
+
+article {
+    border-radius: 10px;
+    margin-bottom: 20px;
+    padding: 5px;
+    background-color: var(--secondary-bg);
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-fg);
+}
+
+main > section > a {
+    display: inline-block;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--brand-fg);
+    background: var(--brand-bg);
+    padding: 5px;
+    margin-top: 5px;
+    width: fit-content;
+}
+
+/*header*/
+
+article header {
+    border-radius: 10px;
+    background-color: var(--primary-bg);
+    padding: 5px;
+}
+
+article header a img {
+    border-radius: 10px;
+    height: 20px;
+    border: 1px solid var(--border);
+    object-fit: contain;
+}
+
+article header a p {
+    margin: 0 5px;
+    color: var(--primary-bg);
+    font-size: large;
+}
+
+article header a:first-child {
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 0 5px;
+    height: 30px;
+    background-color: var(--brand-bg);
+}
+
+article header a:last-child {
+    margin: auto;
+}
+
+article header a:last-child:hover {
+    text-decoration: underline;
+}
+
+/*a*/
+
+article > a {
+    display: block;
+    margin: 10px 0 0 0;
+}
+
+article >  a > img {
+    display: block;
+    margin: auto;
+    border: 1px solid var(--border);
+    width: 50%;
+    max-height: 150px;
+    border-radius: 10px;
+    object-fit: contain;
+}
+
+article > a p {
+    padding: 0 5px;
+    margin: 5px 0 0 0;
+}
+
+article > a p:last-child {
+    text-align: right;
+    font-size: x-small;
+}
