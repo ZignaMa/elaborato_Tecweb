@@ -5,15 +5,6 @@ const postsForPage = 20;
 let dbOffset = 0;
 const container = "main > section";
 let maxNumberPosts;
-let newPostHtml = `
-    <a href="posts.php">
-        <img src=uploads/static/icons/feather-pointed.svg alt="Crea post" />
-        <p>Crea post</p>
-    </a>
-    <section>
-
-    </section>
-`
 
 async function setMaxNumberPosts() {
     try {
@@ -22,9 +13,10 @@ async function setMaxNumberPosts() {
             throw new Error(`Response status: ${response.status}`);
         }
         const json = await response.json();
-        maxNumberPosts = json[0]["nPosts"];
+        maxNumberPosts = Array.isArray(json) && json.length > 0 ? json[0]["nPosts"] : 0;
     } catch (error) {
         console.log(error.message);
+        maxNumberPosts = 0;
     }
 }
 
@@ -77,9 +69,6 @@ function addHtml(container, text){
 }
 
 async function getPostsData() {
-    if (pageNumber == 0) {
-        addHtml("main", newPostHtml);
-    }
     try {
         const response = await fetch(`api/api-feed.php?giveMePosts=1&offset=${dbOffset}&limit=${postsForPage}`);
         if (!response.ok) {

@@ -7,6 +7,7 @@ main > a {
     position: fixed;
     bottom: 35px;
     left: 50vw;
+    z-index: 2;
     color: var(--primary-bg);
     background-color: var(--brand-bg);
     border: 2px solid var(--border);

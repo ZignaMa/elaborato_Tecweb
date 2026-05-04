@@ -6,6 +6,7 @@ if (!isUserLoggedIn()) {
     header("Location: login.php");
 }
 $templateParams["title"] = "Centro studio - Bacheca";
+$templateParams["main"] = "template/feed.php";
 $templateParams["js"] = ["js/feed.js"];
 $templateParams["css"] = ["css/feed.css"];
 
