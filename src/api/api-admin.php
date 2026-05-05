@@ -1,7 +1,7 @@
 <?php
 require_once "../utils/bootstrap.php";
 
-$data;
+$data = null;
 
 $return = [
     "success" => false,
