@@ -5,8 +5,6 @@ $data = [];
 $classId = null;
 if (isset($_GET['classe_id'])) {
     $classId = $_GET['classe_id'];
-} else if (isset($_GET['classId'])) {
-    $classId = $_GET['classId'];
 }
 
 if (!$classId) {

@@ -44,7 +44,7 @@ if(isUserLoggedIn()) {
                 }
                 $data["idComment"] = $idComment;
                 break;
-            case "4": //cancellazione di un commento
+            case "4": //solo admin cancellazione di un commento
                 if(isAdmin()) {
                     $idComment = (int) $_GET["idComment"];
                     $imgPath = $dbh->getPathOfComment($idComment);
@@ -57,13 +57,13 @@ if(isUserLoggedIn()) {
                     $dbh->removeComment($idComment);
                 }
                 break;
-            case "5": //mdofica testo di un commento
+            case "5": //solo admin modifica testo di un commento
                 if(isAdmin()) {
                     $idComment = (int) $_GET["idComment"];
                     $data = "nuovo testo del commento".$dbh->updateTextOfComment($idComment, htmlspecialchars($_POST["text"]));
                 }
                 break;
-            case "6":
+            case "6": //solo admin rimuove immagine di un commento
                 if(isAdmin()) {
                     $idComment = (int) $_GET["idComment"];
                     $imgPath = $dbh->getPathOfComment($idComment);
@@ -100,7 +100,7 @@ if(isUserLoggedIn()) {
                 }
                 $dbh->removePost($idPost);
                 break;
-            case "8": //modifica testo di un post
+            case "8": //solo admin modifica testo di un post
                 if(isAdmin()) {
                     $idPost = (int) $_GET["idPost"];
                     $data = "nuovo testo del post".$dbh->updateTextOfPost($idPost, htmlspecialchars($_POST["text"]));

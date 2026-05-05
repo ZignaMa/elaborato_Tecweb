@@ -52,7 +52,7 @@ main > header  button:hover {
     border-left: 3px solid var(--border);
     border-radius: 0 10px 0 0;
     cursor: pointer;
-    
+
 }
 
 /*nav*/
@@ -116,7 +116,6 @@ main > section  div {
     padding: 0 5px;
     height: 40px;
     background-color: var(--brand-bg);
-
 }
 
 #posts header img {
@@ -129,7 +128,6 @@ main > section  div {
     margin: 0 5px;
     color: var(--primary-bg);
     font-size: large;
-
 }
 
 #posts article > a {
@@ -172,7 +170,6 @@ main > section  div {
     border-radius: 10px;
     border: 2px solid var(--border);
     border-top: 0;
-    
 }
 
 #info p, #info h3 {
@@ -275,7 +272,7 @@ main > section  div {
     align-items: center;
 }
 
-
+/*l’elemento non viene renderizzato nel layout e forza questa regola a “vincere”*/
 [hidden] {
     display: none !important;
 }

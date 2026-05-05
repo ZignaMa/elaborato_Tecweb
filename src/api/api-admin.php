@@ -142,7 +142,6 @@ if (isAdmin()) {
             break;
         //js
         case "getClassesByCourseId":
-            // require italian 'corso_id'
             $courseId = isset($_GET['corso_id']) ? $_GET['corso_id'] : null;
             if (!$courseId) {
                  $return = ["success" => false, "message" => "manca corso_id", "data" => []];

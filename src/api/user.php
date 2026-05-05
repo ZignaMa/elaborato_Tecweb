@@ -38,7 +38,6 @@ function getRequestedEmail() {
 if (isset($_GET["action"])) {
     switch ($_GET["action"]) {
         case "update":
-            // accept only canonical `img_profilo` file input
             if (!isset($_FILES["img_profilo"])) {
                 return400("No file uploaded");
             }
@@ -124,11 +123,11 @@ if (isset($_GET["action"])) {
                 $data["message"] = $dbh->getUserClassesCountByEmail($email);
             } else {
                 $ris = $dbh->getUserClassesByEmail($email); // No pagination
-        // Groups classes by course_name and school_year
-        $classes = [];
-        foreach($ris as $elemento) {
-            $classes[$elemento["corso_nome"]][] = $elemento;
-        }
+                // Groups classes by course_name and school_year
+                $classes = [];
+                foreach($ris as $elemento) {
+                    $classes[$elemento["corso_nome"]][] = $elemento;
+                }
                 $data["message"] = $classes;
             }
             break;

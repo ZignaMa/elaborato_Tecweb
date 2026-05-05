@@ -7,24 +7,25 @@ if(isUserLoggedIn()) {
     if(isset($_GET["action"])){
         switch ($_GET["action"]) {
             case "1":
+                //corsi dell’utente loggato
                 $data = $dbh->getAllCourses($_SESSION["email"]);
                 break;
             case "2":
-                // uses italian param 'corso'
+                //Ritorna le classi disponibili per quel corso per l’utente loggato
                 $data = $dbh->getAllClasses($_SESSION["email"], $_GET["corso"]);
                 break;
             case "3":
-                // uses italian params 'corso' and 'classe'
+                //Ritorna gli anni accademici disponibili per quella classe+corso
                 $data = $dbh->getYearsViaClassNameAndCourse($_SESSION["email"], $_GET["corso"], $_GET["classe"]);
                 break;
             case "4":
-                // uses italian params 'corso','classe','anno'
+                //Ritorna le sezioni disponibili
                 $data = $dbh->getSectionOfUser($_SESSION["email"], $_GET["corso"], $_GET["classe"], $_GET["anno"]);
                 break;
             case "5":
+                //Inserisce un nuovo post nel DB e opzionalmente gestisce l’upload dell’immagine
                 $idPost = 0;
                 if (isset($_FILES["imgpost"]) && $_FILES["imgpost"]["error"] === UPLOAD_ERR_OK) {
-                    // POST fields expected in italian: corso, classe, sezione, anno
                     $idPost = $dbh->insertNewPost($_POST["corso"], $_POST["classe"], $_POST["sezione"], $_POST["anno"], htmlspecialchars($_POST["text"]), $_SESSION["email"]);
                     if($idPost != 0) {
                         $id_course = (int) $_POST["corso"];
@@ -50,13 +51,12 @@ if(isUserLoggedIn()) {
                         }
                     }
                 } else {
-            $idPost = $dbh->insertNewPost($_POST["corso"], $_POST["classe"], $_POST["sezione"], $_POST["anno"], htmlspecialchars($_POST["text"]), $_SESSION["email"]);
+                    $idPost = $dbh->insertNewPost($_POST["corso"], $_POST["classe"], $_POST["sezione"], $_POST["anno"], htmlspecialchars($_POST["text"]), $_SESSION["email"]);
                 }
                 $data["idPost"] = $idPost;
                 break;
         }
-    }
-     else {
+    } else {
         $data = $dbh->getAllCourses();
     }
 } else {

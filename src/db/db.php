@@ -21,19 +21,19 @@ class DatabaseHelper{
         $query = "SELECT attivo FROM utenti WHERE email = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $id);
-    $stmt->execute();
-    $risultato = $stmt->get_result();
+        $stmt->execute();
+        $risultato = $stmt->get_result();
 
-    return $risultato->fetch_all(MYSQLI_ASSOC);
+        return $risultato->fetch_all(MYSQLI_ASSOC);
     }
 
     public function checkLogin(string $email, string $password): array {
         $query = "SELECT email, nome_utente, amministratore, attivo, img_profilo, password FROM utenti WHERE email = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $email);
-    $stmt->execute();
-    $risultato = $stmt->get_result();
-    $user = $risultato->fetch_all(MYSQLI_ASSOC);
+        $stmt->execute();
+        $risultato = $stmt->get_result();
+        $user = $risultato->fetch_all(MYSQLI_ASSOC);
         if (count($user) > 0 && password_verify($password, $user[0]["password"])) {
             unset($user[0]["password"]);
             return $user;
@@ -66,9 +66,9 @@ class DatabaseHelper{
             $stmt->execute();
             $risultato = $stmt->get_result();
             return $risultato->fetch_all(MYSQLI_ASSOC);
-    } else if($email!=0 && $corso==0) {
+        } else if($email!=0 && $corso==0) {
             //prendere tutte le materie collegate all'utente
-    } else if($email==0 && $corso!=0) {
+        } else if($email==0 && $corso!=0) {
             //prendere tutte le materie collegate al corso
         } else {
             //prendere tutte le materie disponibili nel db
@@ -99,7 +99,7 @@ class DatabaseHelper{
         $success["utente"] = false;
         $success["corso"] = false;
         $password_hash = password_hash($password, PASSWORD_ARGON2ID);
-    $query = "INSERT INTO utenti (email, password, nome_utente, amministratore, attivo) VALUES (?, ?, ?, ?, ?)";
+        $query = "INSERT INTO utenti (email, password, nome_utente, amministratore, attivo) VALUES (?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('sssii', $email, $password_hash, $nome_utente, $admin, $active);
         $success["utente"] = $stmt->execute();
@@ -112,7 +112,7 @@ class DatabaseHelper{
     }
 
     public function getUserViaEmail(string $email): array {
-    $query = "SELECT email, nome_utente, amministratore, attivo, img_profilo FROM utenti WHERE email = ?";
+        $query = "SELECT email, nome_utente, amministratore, attivo, img_profilo FROM utenti WHERE email = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("s", $email);
         $stmt->execute();
@@ -124,7 +124,7 @@ class DatabaseHelper{
     // Update user profile picture.
     // Returns true on success
     public function updateUserProfileImg(string $email, string $path): bool {
-    $query = "UPDATE utenti SET img_profilo = ? WHERE email = ?";
+        $query = "UPDATE utenti SET img_profilo = ? WHERE email = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("ss", $path, $email);
         return $stmt->execute();
@@ -132,13 +132,13 @@ class DatabaseHelper{
 
     // Get the number of posts the user created.
     public function getUserPostsCountByEmail(string $email): int {
-    $query = "SELECT COUNT(p.id) AS n FROM pubblicazioni p WHERE p.email = ?";
+        $query = "SELECT COUNT(p.id) AS n FROM pubblicazioni p WHERE p.email = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $email);
-    $stmt->execute();
-    $risultato = $stmt->get_result();
+        $stmt->execute();
+        $risultato = $stmt->get_result();
 
-    return $risultato->fetch_all(MYSQLI_ASSOC)[0]["n"];
+        return $risultato->fetch_all(MYSQLI_ASSOC)[0]["n"];
     }
 
     // Get posts the user has written.
@@ -152,15 +152,15 @@ class DatabaseHelper{
         $stmt = $this->db->prepare($query);
         $offset = $pageNumber * $postsPerPage;
         $stmt->bind_param('sii', $email, $postsPerPage, $offset);
-    $stmt->execute();
-    $risultato = $stmt->get_result();
+        $stmt->execute();
+        $risultato = $stmt->get_result();
 
-    return $risultato->fetch_all(MYSQLI_ASSOC);
+        return $risultato->fetch_all(MYSQLI_ASSOC);
     }
 
     // Get the number of comments the user created.
     public function getUserCommentsCountByEmail(string $email): int {
-    $query = "SELECT COUNT(c.id) AS n FROM commenti c WHERE c.email = ?";
+        $query = "SELECT COUNT(c.id) AS n FROM commenti c WHERE c.email = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $email);
         $stmt->execute();
@@ -182,15 +182,15 @@ class DatabaseHelper{
         $stmt = $this->db->prepare($query);
         $offset = $pageNumber * $commentsPerPage;
         $stmt->bind_param('sii', $email, $commentsPerPage, $offset);
-    $stmt->execute();
-    $risultato = $stmt->get_result();
+        $stmt->execute();
+        $risultato = $stmt->get_result();
 
-    return $risultato->fetch_all(MYSQLI_ASSOC);
+        return $risultato->fetch_all(MYSQLI_ASSOC);
     }
 
     // Get the number of classes the user follows.
     public function getUserClassesCountByEmail(string $email): int {
-    $query = "SELECT COUNT(c.classe_id) AS n FROM classi_dei_clienti c WHERE c.email = ?";
+        $query = "SELECT COUNT(c.classe_id) AS n FROM classi_dei_clienti c WHERE c.email = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $email);
         $stmt->execute();
@@ -215,7 +215,6 @@ class DatabaseHelper{
 
     // Get all the classes of a course.
     public function getClassesByCourseID(int $course_id, string $year = null): array {
-    // Selezioniamo esplicitamente colonne e usiamo alias in italiano
     $query = "SELECT id, nome, sezione, anno_accademico, professore, assistente, corso_id FROM classi WHERE corso_id = ?";
         if ($year != null) {
             $query .= " AND anno_accademico = ?";
@@ -233,14 +232,10 @@ class DatabaseHelper{
     }
 
     /**
-     * EMANUELE
-     */
-
-    /**
     * BACHECA
     */
     public function getPostsNumberOfEmail($email){
-    $query = "SELECT COUNT(p.id) AS nPosts FROM classi_dei_clienti c, pubblicazioni p WHERE c.email = ? AND c.classe_id = p.classe_id";
+        $query = "SELECT COUNT(p.id) AS nPosts FROM classi_dei_clienti c, pubblicazioni p WHERE c.email = ? AND c.classe_id = p.classe_id";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $email);
         $stmt->execute();
@@ -250,7 +245,7 @@ class DatabaseHelper{
     }
 
     public function getPostsOfEmail($email, $offset, $limit) {
-    $query = "SELECT u.email AS email, c.id AS classe_id, p.id AS pubblicazione_id, u.img_profilo AS img_profilo, u.nome_utente AS nome_utente, co.nome AS corso_nome, c.nome AS classe_nome, c.sezione, c.anno_accademico AS anno_accademico, p.data_e_ora AS data_e_ora, p.testo AS testo, p.percorso AS percorso FROM classi_dei_clienti coc, pubblicazioni p, utenti u, classi c, corsi co WHERE coc.email = ? AND c.id = coc.classe_id AND p.classe_id = c.id AND p.email = u.email AND co.id = c.corso_id ORDER BY p.data_e_ora DESC LIMIT ? OFFSET ?";
+        $query = "SELECT u.email AS email, c.id AS classe_id, p.id AS pubblicazione_id, u.img_profilo AS img_profilo, u.nome_utente AS nome_utente, co.nome AS corso_nome, c.nome AS classe_nome, c.sezione, c.anno_accademico AS anno_accademico, p.data_e_ora AS data_e_ora, p.testo AS testo, p.percorso AS percorso FROM classi_dei_clienti coc, pubblicazioni p, utenti u, classi c, corsi co WHERE coc.email = ? AND c.id = coc.classe_id AND p.classe_id = c.id AND p.email = u.email AND co.id = c.corso_id ORDER BY p.data_e_ora DESC LIMIT ? OFFSET ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('sii', $email, $limit, $offset);
         $stmt->execute();
@@ -260,8 +255,7 @@ class DatabaseHelper{
     }
 
     public function getProfessorNAssistantOfClass($id) {
-    // Restituiamo campi con alias in italiano per i template
-    $query = "SELECT co.id AS corso_id, co.nome AS corso_nome, c.id AS id, c.nome AS nome, c.sezione AS sezione, c.anno_accademico AS anno_accademico, p.email AS professore_email, p.nome AS professore_nome, a.email AS assistente_email, a.nome AS assistente_nome FROM classi c JOIN professori p ON c.professore = p.email JOIN corsi co ON c.corso_id = co.id LEFT JOIN assistenti a ON c.assistente = a.email WHERE c.id = ?";
+        $query = "SELECT co.id AS corso_id, co.nome AS corso_nome, c.id AS id, c.nome AS nome, c.sezione AS sezione, c.anno_accademico AS anno_accademico, p.email AS professore_email, p.nome AS professore_nome, a.email AS assistente_email, a.nome AS assistente_nome FROM classi c JOIN professori p ON c.professore = p.email JOIN corsi co ON c.corso_id = co.id LEFT JOIN assistenti a ON c.assistente = a.email WHERE c.id = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $id);
         $stmt->execute();
@@ -274,7 +268,7 @@ class DatabaseHelper{
         *CLASS
      */
     public function getPostsNumberOfClass($id){
-    $query = "SELECT COUNT(p.id) AS nPosts FROM pubblicazioni p WHERE p.classe_id = ?";
+        $query = "SELECT COUNT(p.id) AS nPosts FROM pubblicazioni p WHERE p.classe_id = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $id);
         $stmt->execute();
@@ -284,7 +278,7 @@ class DatabaseHelper{
     }
 
     public function getPostsOfClass($id, $limit, $offset) {
-    $query = "SELECT DISTINCT u.email AS email, p.id AS pubblicazione_id, u.img_profilo AS img_profilo, u.nome_utente AS nome_utente, p.data_e_ora AS data_e_ora, p.testo AS testo, p.percorso AS percorso FROM classi_dei_clienti coc, pubblicazioni p, utenti u WHERE coc.classe_id = ? AND p.classe_id = ? AND p.email = u.email ORDER BY p.data_e_ora DESC LIMIT ? OFFSET ?";
+        $query = "SELECT DISTINCT u.email AS email, p.id AS pubblicazione_id, u.img_profilo AS img_profilo, u.nome_utente AS nome_utente, p.data_e_ora AS data_e_ora, p.testo AS testo, p.percorso AS percorso FROM classi_dei_clienti coc, pubblicazioni p, utenti u WHERE coc.classe_id = ? AND p.classe_id = ? AND p.email = u.email ORDER BY p.data_e_ora DESC LIMIT ? OFFSET ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('iiii', $id, $id, $limit, $offset);
         $stmt->execute();
@@ -294,7 +288,7 @@ class DatabaseHelper{
     }
 
     public function getResourcesOfClass($id, $limit, $offset) {
-    $query = "SELECT percorso AS percorso FROM risorse_non_collegate WHERE classe_id = ? ORDER BY percorso LIMIT ? OFFSET ?";
+        $query = "SELECT percorso AS percorso FROM risorse_non_collegate WHERE classe_id = ? ORDER BY percorso LIMIT ? OFFSET ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('iii', $id, $limit, $offset);
         $stmt->execute();
@@ -307,7 +301,7 @@ class DatabaseHelper{
             *follow
      */
     public function getFollowStatusOfUserOfClass($email, $class) {
-    $query = "SELECT COUNT(email) AS count FROM classi_dei_clienti WHERE email = ? AND classe_id = ?";
+        $query = "SELECT COUNT(email) AS count FROM classi_dei_clienti WHERE email = ? AND classe_id = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('si', $email, $class);
         $stmt->execute();
@@ -317,14 +311,14 @@ class DatabaseHelper{
     }
 
     public function userStartFollowClass($email, $class) {
-    $query = "INSERT INTO classi_dei_clienti (email, classe_id) VALUES (?, ?)";
+        $query = "INSERT INTO classi_dei_clienti (email, classe_id) VALUES (?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('si', $email, $class);
         return $stmt->execute();
     }
 
     public function userEndFollowClass($email, $class) {
-    $query = "DELETE FROM classi_dei_clienti WHERE email = ? AND classe_id = ?";
+        $query = "DELETE FROM classi_dei_clienti WHERE email = ? AND classe_id = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('si', $email, $class);
         return $stmt->execute();
@@ -334,9 +328,8 @@ class DatabaseHelper{
      *      *resources
      */
 
-
     public function getResourcesNumberOfClass($id){
-    $query = "SELECT COUNT(percorso) AS nResources FROM risorse_non_collegate WHERE classe_id = ?";
+        $query = "SELECT COUNT(percorso) AS nResources FROM risorse_non_collegate WHERE classe_id = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $id);
         $stmt->execute();
@@ -345,9 +338,8 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-
     public function pathReplicateCheck($path) {
-    $query = "SELECT COUNT(percorso) AS count FROM risorse_non_collegate WHERE percorso = ?";
+        $query = "SELECT COUNT(percorso) AS count FROM risorse_non_collegate WHERE percorso = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $path);
         $stmt->execute();
@@ -357,14 +349,14 @@ class DatabaseHelper{
     }
 
     public function insertUnlinkedResources($email, $class, $path) {
-    $query = "INSERT INTO risorse_non_collegate (email, classe_id, percorso) values (?, ?, ?)";
+        $query = "INSERT INTO risorse_non_collegate (email, classe_id, percorso) values (?, ?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('sis', $email, $class, $path);
         return $stmt->execute();
     }
 
     public function deleteUnlinkedResources($path) {
-    $query = "DELETE FROM risorse_non_collegate WHERE percorso = ?";
+        $query = "DELETE FROM risorse_non_collegate WHERE percorso = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $path);
         return $stmt->execute();
@@ -406,7 +398,7 @@ class DatabaseHelper{
     }
 
     public function getAllClient($offset, $limit) {
-    $query = "SELECT img_profilo AS img_profilo, email AS email, nome_utente AS nome_utente, attivo AS attivo FROM utenti WHERE amministratore = 0 ORDER BY email LIMIT ? OFFSET ?";
+        $query = "SELECT img_profilo AS img_profilo, email AS email, nome_utente AS nome_utente, attivo AS attivo FROM utenti WHERE amministratore = 0 ORDER BY email LIMIT ? OFFSET ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ii', $limit, $offset);
         $stmt->execute();
@@ -487,11 +479,6 @@ class DatabaseHelper{
         return $stmt->execute();
     }
 
-
-    /**
-    *END EMANUELE
-    */
-
     public function getYearsViaClassNameAndCourse($email=0, $idCorso=0, $nomeMateria=0){
         if($idCorso!=0 && $nomeMateria!=0 && $email!=0) {
             $result = [];
@@ -541,7 +528,7 @@ class DatabaseHelper{
 
     public function getClassIdViaClassSectionYearCourse($class, $section, $year, $corso_int) {
         $idClasse = 0;
-    $query = "SELECT C.id AS idClasse FROM classi C WHERE C.nome = ? AND C.sezione = ? AND C.anno_accademico = ? AND C.corso_id = ?";
+        $query = "SELECT C.id AS idClasse FROM classi C WHERE C.nome = ? AND C.sezione = ? AND C.anno_accademico = ? AND C.corso_id = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('sssi', $class, $section, $year, $corso_int);
         $stmt->execute();
@@ -575,7 +562,7 @@ class DatabaseHelper{
     }
 
     public function getInitialInfoOfPostViaId($idpost) {
-    $query = "SELECT utenti.nome_utente AS nome_utente, utenti.img_profilo AS img_profilo, utenti.email AS email, corsi.nome AS corso_nome, classi.nome AS classe_nome, classi.sezione, classi.anno_accademico AS anno_accademico, pubblicazioni.data_e_ora AS data_e_ora, pubblicazioni.testo AS testo, pubblicazioni.percorso AS percorso FROM pubblicazioni, classi, corsi, utenti WHERE classi.id = pubblicazioni.classe_id AND corsi.id = classi.corso_id AND utenti.email = pubblicazioni.email AND pubblicazioni.id = ?";
+        $query = "SELECT utenti.nome_utente AS nome_utente, utenti.img_profilo AS img_profilo, utenti.email AS email, corsi.nome AS corso_nome, classi.nome AS classe_nome, classi.sezione, classi.anno_accademico AS anno_accademico, pubblicazioni.data_e_ora AS data_e_ora, pubblicazioni.testo AS testo, pubblicazioni.percorso AS percorso FROM pubblicazioni, classi, corsi, utenti WHERE classi.id = pubblicazioni.classe_id AND corsi.id = classi.corso_id AND utenti.email = pubblicazioni.email AND pubblicazioni.id = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $idpost);
         $stmt->execute();
@@ -612,7 +599,7 @@ class DatabaseHelper{
     }
 
     public function getCommentPathViaPostID($idPostInt){
-    $query = "SELECT classi.corso_id AS corso_id, classi.sezione AS sezione, classi.id AS classe_id, classi.anno_accademico AS anno_accademico FROM pubblicazioni, classi WHERE pubblicazioni.classe_id = classi.id AND pubblicazioni.id = ?";
+        $query = "SELECT classi.corso_id AS corso_id, classi.sezione AS sezione, classi.id AS classe_id, classi.anno_accademico AS anno_accademico FROM pubblicazioni, classi WHERE pubblicazioni.classe_id = classi.id AND pubblicazioni.id = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $idPostInt);
         $stmt->execute();
@@ -625,7 +612,7 @@ class DatabaseHelper{
     }
 
     public function isFreeCommentPath($path){
-    $query = "SELECT percorso FROM commenti WHERE percorso = ?";
+        $query = "SELECT percorso FROM commenti WHERE percorso = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("s", $path);
         $stmt->execute();
@@ -637,7 +624,7 @@ class DatabaseHelper{
     }
 
     public function insertNewComment($email, $idpostInt, $text){
-    $query = "INSERT INTO commenti (testo, data_e_ora, pubblicazione_id, email) VALUES (?, NOW(), ?, ?)";
+        $query = "INSERT INTO commenti (testo, data_e_ora, pubblicazione_id, email) VALUES (?, NOW(), ?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('sis', $text, $idpostInt, $email);
         if ($stmt->execute()) {
@@ -666,7 +653,7 @@ class DatabaseHelper{
     }
 
     public function getPathOfComment($idComment){
-    $query = "SELECT commenti.percorso AS percorso FROM commenti WHERE commenti.id = ?";
+        $query = "SELECT commenti.percorso AS percorso FROM commenti WHERE commenti.id = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("i", $idComment);
         if($stmt->execute()){
@@ -675,12 +662,11 @@ class DatabaseHelper{
                 return $riga["percorso"];
             }
         }
-
         return "";
     }
 
     public function removeComment($idComment){
-    $query = "DELETE FROM commenti WHERE commenti.id = ?";
+        $query = "DELETE FROM commenti WHERE commenti.id = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("i", $idComment);
         $imgPath = $this->getPathOfComment($idComment);
@@ -697,7 +683,7 @@ class DatabaseHelper{
 
     public function removePathOfComment($idComment){
         $imgPath = $this->getPathOfComment($idComment);
-    $query = "UPDATE commenti SET percorso = NULL WHERE id = ?";
+        $query = "UPDATE commenti SET percorso = NULL WHERE id = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("i", $idComment);
         if($stmt->execute()) {
@@ -708,7 +694,7 @@ class DatabaseHelper{
         return false;
     }
 
-    /* Nella query seguente si è certi che la path è presente */
+    /* Nella query seguente si è certi che il percorso è presente */
     public function removeCommentResources($imgPath){
         $query = "DELETE FROM risorse_commenti WHERE risorse_commenti.percorso = ?";
         $stmt = $this->db->prepare($query);
@@ -717,14 +703,14 @@ class DatabaseHelper{
     }
 
     public function updateTextOfComment($idComment, $text){
-    $query = "UPDATE commenti SET testo = ? WHERE id = ?";
+        $query = "UPDATE commenti SET testo = ? WHERE id = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("si", $text, $idComment);
         return $stmt->execute();
     }
 
     public function getPathOfPost($idPost){
-    $query = "SELECT pubblicazioni.percorso AS percorso FROM pubblicazioni WHERE pubblicazioni.id = ?";
+        $query = "SELECT pubblicazioni.percorso AS percorso FROM pubblicazioni WHERE pubblicazioni.id = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("i", $idPost);
         if($stmt->execute()){
@@ -733,13 +719,12 @@ class DatabaseHelper{
                 return $riga["percorso"];
             }
         }
-
         return "";
     }
 
     public function removePathOfPost($idPost){
         $imgPath = $this->getPathOfPost($idPost);
-    $query = "UPDATE pubblicazioni SET percorso = NULL WHERE id = ?";
+        $query = "UPDATE pubblicazioni SET percorso = NULL WHERE id = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("i", $idPost);
         if($stmt->execute()) {
@@ -758,7 +743,7 @@ class DatabaseHelper{
     }
 
     public function getAllCommentsViaPostId($idPost){
-    $query = "SELECT commenti.id AS id, commenti.percorso AS percorso FROM pubblicazioni, commenti WHERE pubblicazioni.id = commenti.pubblicazione_id AND pubblicazioni.id = ?";
+        $query = "SELECT commenti.id AS id, commenti.percorso AS percorso FROM pubblicazioni, commenti WHERE pubblicazioni.id = commenti.pubblicazione_id AND pubblicazioni.id = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("i", $idPost);
         $stmt->execute();
@@ -767,14 +752,14 @@ class DatabaseHelper{
     }
 
     public function removePost($idPost){
-    $query = "DELETE FROM pubblicazioni WHERE pubblicazioni.id = ?";
+        $query = "DELETE FROM pubblicazioni WHERE pubblicazioni.id = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("i", $idPost);
         return $stmt->execute();
     }
 
     public function updateTextOfPost($idPost, $text){
-    $query = "UPDATE pubblicazioni SET testo = ? WHERE id = ?";
+        $query = "UPDATE pubblicazioni SET testo = ? WHERE id = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("si", $text, $idPost);
         return $stmt->execute();
