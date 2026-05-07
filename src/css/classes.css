@@ -51,6 +51,8 @@ form fieldset ul li label a:hover {
     text-decoration: underline;
 }
 
+/*è una pseudo-classe (CSS Selectors Level 4) che vuol dire: “seleziona questo elemento se contiene (da qualche parte dentro) un input che corrisponde a :checked”. :checked vale per checkbox/radio selezionati*/
+/*fa da “evidenziatore” della scelta*/
 form fieldset ul li label:has(input:checked) {
     background: var(--brand-bg);
     color: var(--brand-fg);

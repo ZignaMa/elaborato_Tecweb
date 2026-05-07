@@ -1,4 +1,4 @@
-:root {
+:root { /*:root corrisponde a <html> (non a <body>).Si usa spesso perché è il posto “migliore” dove definire variabili CSS (le custom properties)*/
     --primary-bg: white;
     --secondary-bg: lightgray;
     --primary-fg: black;
@@ -36,6 +36,8 @@ body > header {
 }
 
 /* left side (title + logo) */
+/*a sinistra: l’<a> con dentro h1 e img (titolo e logo)
+a destra: il nav con i pulsanti/menu*/
 body > header > a {
     text-decoration: none;
     color: var(--primary-fg);
@@ -120,9 +122,9 @@ body > header > nav ul li img:first-child {
 
 /* pop-up menu */
 body > header > nav div {
-    z-index: 1;
-    visibility: hidden;
-    position: absolute;
+    z-index: 1; /*serve a far sì che il popup stia sopra ad altri elementi*/
+    visibility: hidden; /* il menu parte nascosto (non visibile)*/
+    position: absolute; /* il menu viene posizionato “sopra” la pagina, fuori dal normale flusso. Così può “fluttuare” sotto un bottone.*/
     /* top/right will be set from JS to avoid tiny gaps when moving the pointer */
     background: var(--brand-bg);
     border: 0 1px 1px 1px solid var(--border);
