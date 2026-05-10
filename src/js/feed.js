@@ -34,16 +34,6 @@ function checkImgsPath(path, imgType){
     return realPath;
 }
 
-function escapeHTML(str){
-    if(str == null) return "";
-    return String(str)
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#39;');
-}
-
 
 function createPost(posts) {
     let table = "";
@@ -65,7 +55,7 @@ function createPost(posts) {
                 </header>
                 <a href="posts.php?idpost=${posts[i]["pubblicazione_id"]}">
                     ${checkImgsPath(posts[i]["percorso"], postImgType)}
-                    <p>${escapeHTML(posts[i]["testo"])}</p>
+                    <p>${posts[i]["testo"]}</p>
                     <p>${posts[i]["data_e_ora"]}</p>
                 </a>
             </article>

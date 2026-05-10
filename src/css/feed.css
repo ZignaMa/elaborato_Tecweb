@@ -6,7 +6,7 @@ main > a {
     display: flex;
     position: fixed;
     bottom: 35px;
-    left: 50vw;/* Posiziona il link a 50% della larghezza della viewport (50 viewport-width). Questo sposta il punto di riferimento orizzontale del box al 50% della finestra */
+    left: 50vw;
     z-index: 2;
     color: var(--primary-bg);
     background-color: var(--brand-bg);
@@ -14,7 +14,7 @@ main > a {
     border-radius: 20px;
     padding: 4px;
     max-width: fit-content;
-    transform: translateX(-50%);/* Trasla il box di metà della sua larghezza verso sinistra. Combinato con left: 50vw, il risultato è centrare orizzontalmente il link rispetto alla viewport (tecnica comune: left:50% + transform:translateX(-50%)) */
+    transform: translateX(-50%);
     text-wrap: nowrap;
 }
 
@@ -43,9 +43,9 @@ a {
     text-decoration: none;
     color: var(--primary-fg);
 }
-/* Se posts.length == 0 */
+
 main > section > a {
-    display: inline-block;/* il link abbia padding e bordo ma non occupi tutta la riga */
+    display: inline-block;
     border: 1px solid var(--border);
     border-radius: 8px;
     color: var(--brand-fg);

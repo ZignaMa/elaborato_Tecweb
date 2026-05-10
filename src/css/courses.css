@@ -27,19 +27,19 @@ form ul li label {
 form ul li label input {
     display: none;
 }
-/* Selectors Level 4. Pseudo-classe che filtra quei label che contengono al loro interno un elemento <input> attualmente selezionato (cioè con lo stato checked) */
+
 form ul li label:has(input:checked) {
     background: var(--brand-bg);
     color: var(--brand-fg);
 }
 
 form div {
-    position: sticky;/* posizionato staticamente finché non raggiunge un certo offset rispetto al viewport (o al contenitore di riferimento), dopodiché si "incolla" e rimane visibile (simile a fixed) fino a quando il suo contenitore non scorre fuori dalla viewport */
+    position: sticky;
     bottom: 25px;
     right: 25px;
     z-index: 1;
-    display: flex;/* regole Flexbox */
-    justify-content: center;/* il pulsante o gli input dentro il div saranno centrati orizzontalmente dentro quel div */
+    display: flex;
+    justify-content: center;
 }
 
 form div input {

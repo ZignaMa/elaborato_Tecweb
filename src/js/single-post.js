@@ -29,16 +29,7 @@ function generaSectionPost(sectionPostTextInfo) {
     if(post.isAdmin){
         section += `<a href="api/api-single-post.php?action=7&idPost=${post.idPost}" class="delete-post">Elimina post</a><a href="api/api-single-post.php?action=8&idPost=${post.idPost}" class="modify-post">Modifica post</a>`;
     }
-    function escapeHTML(str){
-        if(str == null) return "";
-        return String(str)
-            .replace(/&/g, '&amp;')
-            .replace(/</g, '&lt;')
-            .replace(/>/g, '&gt;')
-            .replace(/"/g, '&quot;')
-            .replace(/'/g, '&#39;');
-    }
-    section += `<p>${escapeHTML(sectionPostTextInfo["testo"])}</p>`;
+    section += `<p>${sectionPostTextInfo["testo"]}</p>`;
     if(sectionPostTextInfo["percorso"] != null) {
         section += `
             <img src="uploads/media/${sectionPostTextInfo["percorso"]}" alt="" />`;
@@ -67,12 +58,12 @@ function generaSectionNewComments(commentsInfo) {
             li = `
             <li>
                 <a href="user.php?email=${commentsInfo[i]["email"]}"><img src="${userImgSrc}" alt="Foto profilo di ${commentsInfo[i]["nome_utente"]}" />${commentsInfo[i]["nome_utente"]} - ${commentsInfo[i]["data_e_ora"]}</a><a href="api/api-single-post.php?action=4&idComment=${commentsInfo[i]["id"]}" class="delete-comment">Elimina commento</a><a href="api/api-single-post.php?action=5&idComment=${commentsInfo[i]["id"]}" class="modify-comment">Modifica commento</a>
-                <p>${escapeHTML(commentsInfo[i]["testo"])}</p>`;
+                <p>${commentsInfo[i]["testo"]}</p>`;
         } else {
             li = `
             <li>
                 <a href="user.php?email=${commentsInfo[i]["email"]}"><img src="${userImgSrc}" alt="Foto profilo di ${commentsInfo[i]["nome_utente"]}" />${commentsInfo[i]["nome_utente"]} - ${commentsInfo[i]["data_e_ora"]}</a>
-                <p>${escapeHTML(commentsInfo[i]["testo"])}</p>`;
+                <p>${commentsInfo[i]["testo"]}</p>`;
         }
         if(commentsInfo[i]["percorso"] != null) {
             const srcImg = `uploads/media/${commentsInfo[i]["percorso"]}`;
