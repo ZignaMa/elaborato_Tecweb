@@ -88,8 +88,8 @@ body > main > section > ul > li > a{
 }
 
 body > main > section > ul > li > p{
-    overflow-wrap: break-word;
-    word-wrap: break-word;
+    overflow-wrap: break-word;/* Indica che il browser può spezzare (a capo) parole troppo lunghe per rimanere dentro il contenitore. */
+    word-wrap: break-word;/* lasciata per retrocompatibilità con browser più vecchi */
 }
 
 body > main > section > form {

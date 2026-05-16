@@ -24,7 +24,7 @@ body > main > form > ul{
     justify-content: space-evenly;
     flex-direction: column;
 }
-
+/* primi 4 elementi */
 body > main > form > ul > li:nth-child(-n+4){
     width: 90%;
     margin-left: 5%;
